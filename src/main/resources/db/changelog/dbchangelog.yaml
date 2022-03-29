@@ -1,0 +1,98 @@
+databaseChangeLog:
+- changeSet:
+    id: 1648592540293-1
+    author: LenovoIdeaPad5 (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: id
+            type: BIGINT
+        - column:
+            name: authority
+            type: VARCHAR(255)
+        tableName: role
+- changeSet:
+    id: 1648592540293-2
+    author: LenovoIdeaPad5 (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: id
+            type: BIGINT
+        - column:
+            name: password
+            type: VARCHAR(255)
+        - column:
+            name: username
+            type: VARCHAR(255)
+        tableName: user
+- changeSet:
+    id: 1648592540293-3
+    author: LenovoIdeaPad5 (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: user_id
+            type: BIGINT
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: role_id
+            type: BIGINT
+        tableName: user_role
+- changeSet:
+    id: 1648592540293-4
+    author: LenovoIdeaPad5 (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: role_id
+        indexName: FKa68196081fvovjhkek5m97n3y
+        tableName: user_role
+- changeSet:
+    id: 1648592540293-5
+    author: LenovoIdeaPad5 (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: user_id
+        baseTableName: user_role
+        constraintName: FK859n2jvi8ivhui0rl0esws6o
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: id
+        referencedTableName: user
+        validate: true
+- changeSet:
+    id: 1648592540293-6
+    author: LenovoIdeaPad5 (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: role_id
+        baseTableName: user_role
+        constraintName: FKa68196081fvovjhkek5m97n3y
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: id
+        referencedTableName: role
+        validate: true
+
